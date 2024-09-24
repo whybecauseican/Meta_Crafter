@@ -1,37 +1,41 @@
-// Create a variable to hold your NFTs, we'll use an array to store multiple NFTs
-let NFTs = [];
+// Create a variable to hold your NFTs
+const NFTs = [];
 
-// This function will take in values as parameters, create an NFT object, 
-// and store it in the NFTs array
-function mintNFT(name, artist, price) {
+// This function will take in values as parameters, create an
+// NFT object using the parameters passed to it for its metadata, 
+// and store it in the NFTs array.
+function mintNFT(_name, _eyeColor, _shirtType, _bling) {
     const NFT = {
-        name: name,
-        artist: artist,
-        price: price
+        "Name": _name,
+        "EyeColor": _eyeColor,
+        "ShirtType": _shirtType,
+        "Bling": _bling
     };
     NFTs.push(NFT);
-    console.log(`Minted: ${name}`);
+    console.log("Minted: " + _name);
 }
 
-// This function will loop through the NFTs array and print their metadata
+// Create a "loop" that will go through the NFTs array
+// and print their metadata with console.log()
 function listNFTs() {
-    NFTs.forEach((nft, index) => {
-        console.log(`NFT ${index + 1}:`);
-        console.log(`  Name: ${nft.name}`);
-        console.log(`  Artist: ${nft.artist}`);
-        console.log(`  Price: ${nft.price}`);
-    });
+    for (let i = 0; i < NFTs.length; i++) {
+        console.log("NFT #" + (i + 1));
+        console.log("  Name: " + NFTs[i].Name);
+        console.log("  Eye Color: " + NFTs[i].EyeColor);
+        console.log("  Shirt Type: " + NFTs[i].ShirtType);
+        console.log("  Bling: " + NFTs[i].Bling);
+    }
 }
 
-// This function will return the total number of NFTs we have minted
+// Print the total number of NFTs we have minted to the console
 function getTotalSupply() {
-    return NFTs.length;
+    console.log("Total NFTs minted: " + NFTs.length);
 }
 
-// Test the functions
-mintNFT("CryptoArt1", "Artist1", "1.5 ETH");
-mintNFT("CryptoArt2", "Artist2", "2.0 ETH");
-mintNFT("CryptoArt3", "Artist3", "0.8 ETH");
+// Call your functions below this line
+mintNFT("John Rey", "Brown", "Oversized shirt", "ice");
+mintNFT("Jane Doe", "Blue", "Jacket", "gold chain");
+mintNFT("Sam Smith", "Green", "Hoodie", "diamond ring");
 
 listNFTs();
-console.log("Total NFTs minted: " + getTotalSupply());
+getTotalSupply();
